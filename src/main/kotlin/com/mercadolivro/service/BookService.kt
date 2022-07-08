@@ -35,4 +35,13 @@ class BookService(
         book.status = BooksEnum.CANCELADO
         bookRepository.save(book)
     }
+
+    fun findByCustomer(customer_id: String){
+        val books = bookRepository.findByCustomer(customer_id)
+
+        for(book in books){
+            book.status = BooksEnum.DELETADO
+        }
+        bookRepository.saveAll(books)
+    }
 }

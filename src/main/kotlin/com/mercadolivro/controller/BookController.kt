@@ -1,5 +1,6 @@
 package com.mercadolivro.controller
 
+import com.mercadolivro.enums.BooksEnum
 import com.mercadolivro.model.BookModel
 import com.mercadolivro.service.BookService
 import org.springframework.web.bind.annotation.*
@@ -7,7 +8,7 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("Book")
 class BookController(
-    var bookService: BookService
+    var bookService: BookService,
 ) {
     @PostMapping
     fun save(@RequestBody book : BookModel): BookModel{
@@ -33,4 +34,5 @@ class BookController(
     fun destroy(@PathVariable id: String){
         bookService.destroy(id)
     }
+
 }

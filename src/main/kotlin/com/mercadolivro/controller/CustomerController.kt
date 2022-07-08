@@ -1,13 +1,15 @@
 package com.mercadolivro.controllers
 
 import com.mercadolivro.model.CustomerModel
+import com.mercadolivro.service.BookService
 import com.mercadolivro.services.CustomerService
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("customer")
 class CustomerController(
-    val customerService : CustomerService
+    val customerService : CustomerService,
+    val bookService: BookService
 ) {
     @GetMapping
     fun getCustomer(@RequestParam name: String):List<CustomerModel>{
@@ -31,6 +33,7 @@ class CustomerController(
 
     @DeleteMapping("/{id}")
     fun destroy(@PathVariable id: String){
+        bookService.findByCustomer(id)
         customerService.destroy(id)
     }
 }

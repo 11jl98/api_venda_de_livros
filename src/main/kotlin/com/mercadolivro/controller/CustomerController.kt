@@ -1,4 +1,4 @@
-package com.mercadolivro.controllers
+package com.mercadolivro.controller
 
 import com.mercadolivro.model.CustomerModel
 import com.mercadolivro.service.BookService

@@ -12,8 +12,8 @@ data class BookModel(
     var id: String ? = UUID.randomUUID().toString(),
 
     @ManyToOne
-    @JoinColumn
-    var customer_id: String? = null,
+    @JoinColumn(name = "customer_id")
+    var customer: CustomerModel? = null,
 
     @Column
     var name: String,
@@ -23,5 +23,5 @@ data class BookModel(
 
     @Column
     @Enumerated(EnumType.STRING)
-    var status: BooksEnum? = null,
+    var status: BooksEnum? = BooksEnum.ATIVO,
 )

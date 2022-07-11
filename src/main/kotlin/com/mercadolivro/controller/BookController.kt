@@ -1,17 +1,19 @@
 package com.mercadolivro.controller
 
-import com.mercadolivro.enums.BooksEnum
 import com.mercadolivro.model.BookModel
 import com.mercadolivro.service.BookService
+import com.mercadolivro.services.CustomerService
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("Book")
 class BookController(
-    var bookService: BookService,
+    val bookService: BookService,
+    val customerService: CustomerService
 ) {
     @PostMapping
     fun save(@RequestBody book : BookModel): BookModel{
+        println(book)
         return bookService.save(book)
     }
 

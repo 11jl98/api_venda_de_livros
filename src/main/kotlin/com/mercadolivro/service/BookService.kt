@@ -3,8 +3,9 @@ package com.mercadolivro.service
 import com.mercadolivro.enums.BooksEnum
 import com.mercadolivro.model.BookModel
 import com.mercadolivro.repository.BookRepository
+import org.springframework.stereotype.Service
 
-
+@Service
 class BookService(
    val bookRepository: BookRepository
 ) {
@@ -19,8 +20,6 @@ class BookService(
     }
 
     fun save(book: BookModel): BookModel{
-        if(book.customer_id == null) return throw Exception()
-
         return bookRepository.save(book)
     }
     fun update(book: BookModel, id: String){
